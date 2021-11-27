@@ -1,3 +1,7 @@
+Move file from one folder to respective folder.
+
+Touch abc.txt def.txt ghi.txt jkl.txt
+
 #!/bin/bash 
 
 for file in `ls *.txt`
