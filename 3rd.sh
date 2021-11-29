@@ -1,11 +1,30 @@
-Write a Program to show Sum of three Integer adds to ZERO
-
 #!/bin/bash -x
-sum=0
-for ((i=0; i<3; i++))
+read -p"enter number to check palindrone and prime;"num
+s=0
+rev=""
+za=$num
+temp=$num
+while [ $num -gt 0 ]
 do
-	read -p "enter number to calculate sum::"n
-	array[$i]="$n"
-	sum=$(( $sum + $n x))
+	s=$(($num%10))
+	num=$(($num/10))
+rev=$(echo ${rev}${s})
 done
-echo "${array[@]}"
+if [$temp -eq $rev]
+then
+	echo "palindrone"
+else
+	echo "not palindrone"
+fi
+
+m=$(($za/2))
+for((i=2; i<=$m; i++))
+do
+	a=$(($za%$i))
+	if[$a -eq 0]
+	then
+		echo "Prime"
+	else
+		echo "not prime"
+	fi
+done

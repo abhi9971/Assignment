@@ -1,30 +1,25 @@
-1.write a program in the folowing steps
-a. generate1. Write a program in the following steps
-a. Generates 10 Random 3 Digit number.
-b. Store this random numbers into a array.
-c. Then find the 2nd largest and the 2nd smallest element without sorting the array.
-
-#!/bin/bash
-
-max=0
-min=o
-
-for ((ia=0; ia<10; ia++))
-do
-	num=$((RANDOM%6+1))$(($RANDOM%6+1))$((RANDOM%6+1))
-	array[$ia]="$num"
-done
-
-echo "${!array[@]}=${array[@]}"
-
-for i in ${array[@]};
-do
-	(($i>max || max==0))&&max=$i
-	(($i<min || min==0))&&min=$i
-done
-
-echo "min=$min max=$max"
-echo "End of program"
-
-
+#!/bin/bash -x
+echo "*** Converting between the different temperature scales ***"
+echo "1. Convert Celsius temperature into Fahrenheit"
+echo "2. Convert Fahrenheit temperatures into Celsius"
+echo -n "Select your choice (1-2) : "
+read choice
+if [ $choice -eq 1 ]
+then
+	echo -n "Enter temperature (C) : "
+	read tc
+	# formula Tf=(9/5)*Tc+32
+	tf=$(echo "scale=2;((9/5) * $tc) + 32" |bc)
+	echo "$tc C = $tf F"
+elif [ $choice -eq 2 ]
+then
+	echo -n "Enter temperature (F) : "
+	read tf
+	# formula Tc=(5/9)*(Tf-32) 
+	tc=$(echo "scale=2;(5/9)*($tf-32)"|bc)
+	echo "$tf = $tc"
+else
+	echo "Please select 1 or 2 only"
+	exit 1
+fi
 
