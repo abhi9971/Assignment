@@ -1,17 +1,25 @@
-Extend the above program to sort the array and then find the 2nd largest and the 2nd smallest element.
+Write a Program where a gambler starts with Rs 100 and places Re 1 bet
+until he/she goes broke i.e. no more money to gamble or reaches the
+goal of Rs 200. Keeps track of number of times won and number of bets made.
 
 #!/bin/bash
-
-max=0
-min=0
-
-for ((ia=0; ia<10; ia++))
+money=100
+while[ $money -le 200 ]
 do
-        num=$((RANDOM%6+1))$(($RANDOM%6+1))$((RANDOM%6+1))
-        array[$ia]="$num"
+	randomcheck=$((RANDOM%2))
+	if[ $randomcheck -eq 1 ]
+	then
+		money=$((money+1))
+		if[ $money -eq 200 ]
+		then
+		break
+		fi
+	else
+	money=$(($money-1))
+	if[ $money -eq 0 ]
+	then
+	break
+	fi
+fi
+fi
 done
-
-echo "${!array[@]}=${array[@]}"
-
-echo "2nd largest::""$array[@]"|sort -n |head -2 | tail -1
-echo "2nd smallest::""$array[@]"|sort -n |tail -2 | head -1
