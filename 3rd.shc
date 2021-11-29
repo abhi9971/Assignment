@@ -1,0 +1,13 @@
+#!/bin/bash
+
+read -p "enter number to check palindrone and prime;"num
+s=0
+rev=""
+za=$num
+temp=$num
+while [$num -gt 0]
+do
+	s=$(($num%10))
+	num=$(($num/10))
+	rev=$(echo ${rev}${s})
+done
